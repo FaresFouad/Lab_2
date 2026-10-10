@@ -11,7 +11,7 @@ while true;do
     for file in $1/*; do
         for ext in ${extension[@]}; do
             if [ "$(echo "$file" | awk -F. '{print $NF}')" = "$ext" ]; then
-                echo $file is malicious and it is DELETED
+                echo "$file is malicious and it is DELETED"
                 cp "$file" "$2"
                 rm "$file"
                 flag=1;
@@ -23,7 +23,7 @@ while true;do
                 break
             fi
             if [ "$(cat "$file" | grep -i "$word")" != "" ]; then
-                echo $file is malicious and it is DELETED
+                echo "$file is malicious and it is DELETED"
                 cp "$file" "$2"
                 rm "$file"
                 break
@@ -32,7 +32,7 @@ while true;do
         flag=0;
 
     done
-    ls -l $1 > "directory_info.new"
+    ls -l "$1" > "directory_info.new"
     cp "directory_info.new" "directory_info.last"
     sleep "$3"
 done
