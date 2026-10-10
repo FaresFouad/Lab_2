@@ -1,6 +1,10 @@
 #!/bin/bash
 
 while true; do
+if [ $(ls $2 | cat | wc -l) -eq 0 ]; then
+    echo "No malicious files to review"
+    break
+fi
     ls $2 | cat -n
     echo "Choose a file: "
     read choice1
