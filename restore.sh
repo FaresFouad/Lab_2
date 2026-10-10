@@ -16,11 +16,11 @@ fi
     if [ $choice2 -eq 1 ]; then
         cp "$2/$file" "$1"
         rm "$2/$file"
-        echo "Restores $file to $1"
+        echo "Restored $file to $1."
     elif [ $choice2 -eq 2 ]; then
         rm "$2/$file"
-        echo "$file permanently deleted"
+        echo "$file permanently deleted."
     else
-        echo "Going back to main menu"
+        echo "Going back to main menu."
     fi
     done
