@@ -41,7 +41,9 @@ sudo apt install make
 
 ```bash
 make antivirusd 
+```
 
+```bash
 make restore
 ```
 
