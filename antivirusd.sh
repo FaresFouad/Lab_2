@@ -3,9 +3,8 @@ extension=(exe bat vbs scr ps1)
 malicious_words=(virus trojan malware ransomware worm)
 flag=0;
 while true;do
-    sleep $3
     ls -l $1 > "directory_info.new"
-    if [ "$(diff "directory_info.last" "directory_info.new")" = "" ]; then
+    if [ -f "directory_info.last" ] && [ "$(diff "directory_info.last" "directory_info.new")" = "" ]; then
         continue
     fi
     for file in $1/*; do
@@ -34,4 +33,5 @@ while true;do
     done
     ls -l $1 > "directory_info.new"
     cp "directory_info.new" "directory_info.last"
+    sleep $3
 done
