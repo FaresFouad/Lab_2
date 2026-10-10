@@ -1,7 +1,7 @@
 #!/bin/bash
 
 while true; do
-if [ $(ls $2 | cat | wc -l) -eq 0 ]; then
+if [ $(ls "$2" | cat | wc -l) -eq 0 ]; then
     echo "No malicious files to review"
     break
 fi
@@ -16,10 +16,10 @@ fi
     if [ $choice2 -eq 1 ]; then
         cp "$2/$file" "$1"
         rm "$2/$file"
-        echo "$file has been restored back into $1"
+        echo "Restores $file to $1"
     elif [ $choice2 -eq 2 ]; then
         rm "$2/$file"
-        echo "$file has been permanently deleted from $2"
+        echo "$file permanently deleted"
     else
         echo "Going back to main menu"
     fi
