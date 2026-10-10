@@ -1,26 +1,27 @@
 #!/bin/bash
 
 while true; do
-if [ $(ls "$2" | cat | wc -l) -eq 0 ]; then
+if [ $(ls $2 | cat | wc -l) -eq 0 ]; then
     echo "No malicious files to review"
     break
 fi
-    ls "$2" | cat -n
+    ls $2 | cat -n
     echo "Choose a file: "
     read choice1
     echo "1: Restore this file back into dir(it was a false positive)" 
     echo "2: Permanently delete this file from malicious_dir(it was genuinely malicious)"
     echo "3: Go back"
     read choice2
-    file=$(ls "$2" | cat | awk "NR==$choice1")
+    file=$(ls $2 | cat | awk "NR==$choice1")
     if [ $choice2 -eq 1 ]; then
         cp "$2/$file" "$1"
+        cp "$2/$file" "$1/Whitelist"
         rm "$2/$file"
-        echo "Restored $file to $1."
+        echo "$file has been restored back into $1"
     elif [ $choice2 -eq 2 ]; then
         rm "$2/$file"
-        echo "$file permanently deleted."
+        echo "$file has been permanently deleted from $2"
     else
-        echo "Going back to main menu."
+        echo "Going back to main menu"
     fi
     done

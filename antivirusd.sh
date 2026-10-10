@@ -5,10 +5,15 @@ flag=0;
 while true;do
     ls -l $1 > "directory_info.new"
     if [ -f "directory_info.last" ] && [ "$(diff "directory_info.last" "directory_info.new")" = "" ]; then
+        sleep $3
         continue
     fi
     for file in $1/*; do
         if [ ! -f "$file" ]; then
+            continue
+        fi
+
+        if [ -f "$1/Whitelist/$(basename "$file")" ]; then
             continue
         fi
         for ext in ${extension[@]}; do

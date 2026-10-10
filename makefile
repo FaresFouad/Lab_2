@@ -1,11 +1,13 @@
-create:
+setup:
 	mkdir -p malicious_dir
-	chmod +x antivirusd.sh restore.sh
+	mkdir -p dir/Whitelist
 
-antivirusd: create
+antivirusd: setup
+	chmod +x antivirusd.sh
 	@echo "Running antivirus daemon..."
 	bash antivirusd.sh dir malicious_dir 5
 
-restore: create
+restore: setup
+	chmod +x restore.sh
 	@echo "Running restore tool..."
 	bash restore.sh dir malicious_dir
