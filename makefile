@@ -1,5 +1,6 @@
 create:
 	mkdir -p malicious_dir
+	chmod +x antivirusd.sh restore.sh
 
 antivirusd: create
 	@echo "Running antivirus daemon..."
