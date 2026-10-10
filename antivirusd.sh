@@ -3,8 +3,8 @@ extension=(exe bat vbs scr ps1)
 malicious_words=(virus trojan malware ransomware worm)
 flag=0;
 while true;do
-    sleep $3
-    ls -l $1 > "directory_info.new"
+    sleep "$3"
+    ls -l "$1" > "directory_info.new"
     if [ -f "directory_info.last" ] && [ "$(diff "directory_info.last" "directory_info.new")" = "" ]; then
         continue
     fi
